@@ -25,6 +25,8 @@ let submit = document.getElementById("submit");
 let back = document.getElementById("back");
 let next = document.getElementById("next");
 
+let team = [];
+
 window.story_key = "";
 
 option1.addEventListener('click', function() {
@@ -49,7 +51,9 @@ option3.addEventListener('click', function() {
 });
 
 submit.addEventListener('click', function() {
-    
+    option3.classList.remove('selected');
+    option2.classList.remove('selected');
+    option1.classList.remove('selected');
     if (window.story_key == "1a") {
         submit.id="submit1";
         story_image.src = "NEED TO ADD IMAGE";
@@ -64,26 +68,29 @@ submit.addEventListener('click', function() {
         option3_title.innerHTML = "Plan C: Casino Job";
         option3_desc.innerHTML = "Let them set it up, let them get comfortable. Then take it right out from under their noses during the gala.";
     } else if (window.story_key == "1b") {
-        submit.id="submit2";
+        
         story_image.src = "NEED TO ADD IMAGE";
         title.innerHTML = "Audition Scene";
         p1.innerHTML = "Four candidates show up. You were expecting professionals. You got... this.";
         p2.innerHTML = "A velociraptor in a trench coat. Captain America with a clipboard. Gru adjusting his turtleneck. And Moleman, already halfway underground.";
-        p3.innerHTML = "You can take up to three. Choose wrong and this ends before it begins.";
-    } else {
-        alert("Please select an option before submitting.");
-    }
-    if (window.story_key == "1b") {
-        alert("You will now decide which team members you want to take.");
+        p3.innerHTML = "Choose wisely for if you choose wrong and this ends before it begins.";
+        option1_title.innerHTML = "";
+        option1_desc.innerHTML = "";
+        option2_title.innerHTML = "";
+        option2_desc.innerHTML = "";
+        setTimeout(function() {
+        submit.id="submit2";
         title.innerHTML = "Choose Your Team: Velociraptor";
         story_image.src = "NEED TO ADD IMAGE";
         p1.innerHTML = "A figure bursts through the door before you even call her name. She's seven feet of muscle, claw, and barely-contained chaos in a trench coat.";
         p2.innerHTML = "She doesn't sit. She just stares at you and tilts her head like she's deciding whether you're worth her time.";
         p3.innerHTML = "Fast enough to outrun a police cruiser. Loyal enough to drag you out when everything goes wrong. Just don't expect her to carry the harp.";
-        option1_title.innerHTML = "Sign him on";
+        option1_title.innerHTML = "Sign her on";
         option1_desc.innerHTML = "Velociraptor will be added to your team.";
         option2_title.innerHTML = "Pass";
-        option2_desc.innerHTML = "Velociraptor will not be added to your team.";
+        option2_desc.innerHTML = "Velociraptor will not be added to your team.";}, 10000);
+    } else {
+        alert("Please select an option before submitting.");
     }
     window.story_key = "";
 });
@@ -93,5 +100,48 @@ submit1.addEventListener('click', function() {
 });
 
 submit2.addEventListener('click', function() {
-    if (window.story_key == "1b") {}
+    if (window.story_key == "1a") {
+        team.push("Velociraptor");
+        captain_america();
+    } else if (window.story_key == "1b") {
+        captain_america();
+    } else {
+        alert("Please select an option before submitting.");
+    }
+})
+
+function captain_america() {
+    title.innerHTML = "Choose Your Team: Captain America";
+    story_image.src = "NEED TO ADD IMAGE";
+    p1.innerHTML = "Shows up in full uniform, shield strapped to his back, firm handshake.";
+    p2.innerHTML = "Upstanding. Principled. The kind of guy who still calls his mom on Sundays";
+    p3.innerHTML = "He hasn't stopped smiling since he walked in. It's a little unsettling.";
+    option1_title.innerHTML = "Sign her on";
+    option1_desc.innerHTML = "Captain America will be added to your team.";
+    option2_title.innerHTML = "Pass";
+    option2_desc.innerHTML = "Captain America will not be added to your team.";
+    submit.id="submit3";
+}
+
+submit3.addEventListener('click', function() {
+    if (window.story_key == "1a") {
+        team.push("Captain America");
+        gru();
+    } else if (window.story_key == "1b") {
+        gru();
+    } else {
+        alert("Please select an option before submitting.");
+    }
 });
+function gru() {
+    title.innerHTML = "Choose Your Team: Gru";
+    story_image.src = "NEED TO ADD IMAGE";
+    p1.innerHTML = "Arrived fifteen minutes early in a perfectly pressed grey turtleneck.";
+    p2.innerHTML = "Slid a laminated three-page résumé across the table without making eye contact.";
+    p3.innerHTML = "He has done this before. That much is obvious.";
+    option1_title.innerHTML = "Sign him on";
+    option1_desc.innerHTML = "Gru will be added to your team.";
+    option2_title.innerHTML = "Pass";
+    option2_desc.innerHTML = "Gru will not be added to your team.";
+    submit.id="submit3";
+}

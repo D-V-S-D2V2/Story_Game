@@ -246,7 +246,7 @@ body > *:not(header) {
 }
 
 /* === SUBMIT BUTTON === */
-#submit {
+#submit, #submit1, #submit2 {
   padding: 1rem 2.5rem;
   border-radius: 0.5rem;
   border: none;
@@ -262,13 +262,13 @@ body > *:not(header) {
   transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-#submit:hover {
+#submit:hover, #submit1, #submit2 {
   background-color: rgba(236, 91, 19, 0.88);
   box-shadow: 0 12px 40px var(--primary-glow), 0 0 28px var(--cyan-glow);
   transform: translateY(-1px);
 }
 
-#submit:active {
+#submit:active, #submit1:active, #submit2:active {
   transform: translateY(0);
 }
 
@@ -296,7 +296,7 @@ body > *:not(header) {
     justify-content: center;
   }
 
-  #submit {
+  #submit, #submit1, #submit2 {
     width: 100%;
     text-align: center;
   }
