@@ -24,10 +24,13 @@ let option4_desc = document.getElementById("option4_desc");
 let submit = document.getElementById("submit");
 let back = document.getElementById("back");
 let next = document.getElementById("next");
-
 let team = [];
 
 window.story_key = "";
+window.story_stage = "start";
+
+
+
 
 option1.addEventListener('click', function() {
     option1.classList.add('selected');
@@ -47,26 +50,22 @@ option3.addEventListener('click', function() {
     option3.classList.add('selected');
     option2.classList.remove('selected');
     option1.classList.remove('selected');
-    window.story_key = "1b";
+    window.story_key = "1c";
 });
 
-submit.addEventListener('click', function() {
+
+
+
+
+
+window.submit.addEventListener('click', function() {
     option3.classList.remove('selected');
     option2.classList.remove('selected');
     option1.classList.remove('selected');
-    if (window.story_key == "1a") {
-        submit.id="submit1";
-        story_image.src = "NEED TO ADD IMAGE";
-        title.innerHTML = "Choose a Plan";
-        p1.innerHTML = " Intel confirms the harp moves in 48 hours. You spread your notes across the table and stare at the options.";
-        p2.innerHTML = "Three windows. Three very different risks.";
-        p3.innerHTML = "Pick the wrong one and you're not just broke — you're wearing an orange jumpsuit.";
-        option1_title.innerHTML = "Plan A: Hostage";
-        option1_desc.innerHTML = "Walk in loud. Hold the room. Use the harp as the bargaining chip to walk out clean.";
-        option2_title.innerHTML = " Plan B: En Route";
-        option2_desc.innerHTML = "Hit the armored transport mid-transfer before it ever reaches the casino. Fast window, no witnesses.";
-        option3_title.innerHTML = "Plan C: Casino Job";
-        option3_desc.innerHTML = "Let them set it up, let them get comfortable. Then take it right out from under their noses during the gala.";
+    if (window.story_stage == "start") {
+        if (window.story_key == "1a") {
+        plan();
+        window.story_stage = "plan_selection";
     } else if (window.story_key == "1b") {
         
         story_image.src = "NEED TO ADD IMAGE";
@@ -79,7 +78,7 @@ submit.addEventListener('click', function() {
         option2_title.innerHTML = "";
         option2_desc.innerHTML = "";
         setTimeout(function() {
-        submit.id="submit2";
+        window.story_stage = "Captaion_America";
         title.innerHTML = "Choose Your Team: Velociraptor";
         story_image.src = "NEED TO ADD IMAGE";
         p1.innerHTML = "A figure bursts through the door before you even call her name. She's seven feet of muscle, claw, and barely-contained chaos in a trench coat.";
@@ -93,22 +92,78 @@ submit.addEventListener('click', function() {
         alert("Please select an option before submitting.");
     }
     window.story_key = "";
-});
-
-submit1.addEventListener('click', function() {
-
-});
-
-submit2.addEventListener('click', function() {
-    if (window.story_key == "1a") {
-        team.push("Velociraptor");
+    } else if (window.story_stage == "Captain America") {
+        if (window.story_key == "1a") {
+        team.push("Velicraptior");
         captain_america();
-    } else if (window.story_key == "1b") {
+        window.story_stage = "Gru";
+        } else if (window.story_key == "1b") {
+        window.story_stage = "Gru";
         captain_america();
     } else {
         alert("Please select an option before submitting.");
     }
-})
+    window.story_key = "";
+    } else if (window.story_stage == "Gru") {
+        if (window.story_key == "1a") {
+        team.push("Captain America");
+        gru();
+        window.story_stage = "Moleman";
+        } else if (window.story_key == "1b") {
+        window.story_stage = "Moleman";
+        gru();
+        } else {
+        alert("Please select an option before submitting.");
+        }
+        window.story_key = "";
+    } else if (window.story_stage == "Moleman") {
+        if (window.story_key == "1a") {
+        team.push("Gru");
+        moleman();
+        window.story_stage = "plan";
+        } else if (window.story_key == "1b") {
+        window.story_stage = "plan";
+        moleman();
+    } else {
+        alert("Please select an option before submitting.");
+    }
+    window.story_key = "";
+    } else if (window.story_stage == "plan") {
+        if (window.story_key == "1a") {
+        team.push("Moleman");
+        plan();
+        window.story_stage = "plan_selection";
+        } else if (window.story_key == "1b") {
+        plan();
+        } else {
+        alert("Please select an option before submitting.");
+        }
+        window.story_key = "";
+    } else if (window.story_stage == "plan_selection") {
+        if (window.story_key == "1a") {
+            title.innerHTML = "PLAN A — Hostage Scenes";
+            story_image.src = "NEED TO ADD IMAGE";
+
+            setTimeout(function() {
+                if (team.includes("Captain America")) {
+                    p1.innerHTML = "Shows up in full uniform, shield strapped to his back, firm handshake.";
+                    p2.innerHTML = "Upstanding. Principled. The kind of guy who still calls his mom on Sundays";
+                    p3.innerHTML = "He hasn't stopped smiling since he walked in. It's a little unsettling.";
+            }
+            }, 10000);
+            
+            
+            option1_title.innerHTML = "Sign her on";
+            option1_desc.innerHTML = "Captain America will be added to your team.";
+            option2_title.innerHTML = "Pass";
+            option2_desc.innerHTML = "Captain America will not be added to your team.";
+        }
+    }
+});
+
+
+
+
 
 function captain_america() {
     title.innerHTML = "Choose Your Team: Captain America";
@@ -120,19 +175,8 @@ function captain_america() {
     option1_desc.innerHTML = "Captain America will be added to your team.";
     option2_title.innerHTML = "Pass";
     option2_desc.innerHTML = "Captain America will not be added to your team.";
-    submit.id="submit3";
 }
 
-submit3.addEventListener('click', function() {
-    if (window.story_key == "1a") {
-        team.push("Captain America");
-        gru();
-    } else if (window.story_key == "1b") {
-        gru();
-    } else {
-        alert("Please select an option before submitting.");
-    }
-});
 function gru() {
     title.innerHTML = "Choose Your Team: Gru";
     story_image.src = "NEED TO ADD IMAGE";
@@ -143,5 +187,31 @@ function gru() {
     option1_desc.innerHTML = "Gru will be added to your team.";
     option2_title.innerHTML = "Pass";
     option2_desc.innerHTML = "Gru will not be added to your team.";
-    submit.id="submit3";
+}
+
+function moleman() {
+    title.innerHTML = "Choose Your Team: Moleman";
+    story_image.src = "NEED TO ADD IMAGE";
+    p1.innerHTML = "Came up through the floor. Didn't knock.";
+    p2.innerHTML = "Brushed the dirt off his shoulders, found a seat, and has been waiting quietly ever since.";
+    p3.innerHTML = "Hasn't said a word. Doesn't seem nervous at all.";
+    option1_title.innerHTML = "Sign him on";
+    option1_desc.innerHTML = "Moleman will be added to your team.";
+    option2_title.innerHTML = "Pass";
+    option2_desc.innerHTML = "Moleman will not be added to your team.";
+}
+
+function plan() {
+    story_image.src = "NEED TO ADD IMAGE";
+    title.innerHTML = "Choose a Plan";
+    p1.innerHTML = " Intel confirms the harp moves in 48 hours. You spread your notes across the table and stare at the options.";
+    p2.innerHTML = "Three windows. Three very different risks.";
+    p3.innerHTML = "Pick the wrong one and you're not just broke — you're wearing an orange jumpsuit.";
+    option1_title.innerHTML = "Plan A: Hostage";
+    option1_desc.innerHTML = "Walk in loud. Hold the room. Use the harp as the bargaining chip to walk out clean.";
+    option2_title.innerHTML = " Plan B: En Route";
+    option2_desc.innerHTML = "Hit the armored transport mid-transfer before it ever reaches the casino. Fast window, no witnesses.";
+    option3_title.innerHTML = "Plan C: Casino Job";
+    option3_desc.innerHTML = "Let them set it up, let them get comfortable. Then take it right out from under their noses during the gala.";
+    window.story_stage = "plan_selection";
 }
