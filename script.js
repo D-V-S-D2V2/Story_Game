@@ -73,12 +73,9 @@ window.submit.addEventListener('click', function() {
         p1.innerHTML = "Four candidates show up. You were expecting professionals. You got... this.";
         p2.innerHTML = "A velociraptor in a trench coat. Captain America with a clipboard. Gru adjusting his turtleneck. And Moleman, already halfway underground.";
         p3.innerHTML = "Choose wisely for if you choose wrong and this ends before it begins.";
-        option1_title.innerHTML = "";
-        option1_desc.innerHTML = "";
-        option2_title.innerHTML = "";
-        option2_desc.innerHTML = "";
+        blank_text();
         setTimeout(function() {
-        window.story_stage = "Captaion_America";
+        window.story_stage = "Captain America";
         title.innerHTML = "Choose Your Team: Velociraptor";
         story_image.src = "NEED TO ADD IMAGE";
         p1.innerHTML = "A figure bursts through the door before you even call her name. She's seven feet of muscle, claw, and barely-contained chaos in a trench coat.";
@@ -139,30 +136,87 @@ window.submit.addEventListener('click', function() {
         alert("Please select an option before submitting.");
         }
         window.story_key = "";
+        
     } else if (window.story_stage == "plan_selection") {
+        blank_text();
         if (window.story_key == "1a") {
             title.innerHTML = "PLAN A — Hostage Scenes";
             story_image.src = "NEED TO ADD IMAGE";
-
+            p1.innerHTML = "You breach the lobby at midnight. Earpiece in, hood up, heart doing something uncomfortable in your chest.";
+            console.log('stmh')
+            p2.innerHTML = "The team fans out without a word. Every guard in the room freezes. For a moment, the whole building holds its breath.";
+            p3.innerHTML = "You tell everyone to get down, and if they don't they will be made an example of. The silence is deafening.";
             setTimeout(function() {
                 if (team.includes("Captain America")) {
-                    p1.innerHTML = "Shows up in full uniform, shield strapped to his back, firm handshake.";
-                    p2.innerHTML = "Upstanding. Principled. The kind of guy who still calls his mom on Sundays";
-                    p3.innerHTML = "He hasn't stopped smiling since he walked in. It's a little unsettling.";
+                    p1.innerHTML = "Then your earpiece crackles. The frequency is wrong. That's not your channel.";
+                    p2.innerHTML = "'This is Rogers. I have their exact location. Sending coordinates now.' Your stomach drops through the floor.";
+                    p3.innerHTML = " You look across the room. Steve won't meet your eyes. He already made the call before you even got through the door.";
             }
             }, 10000);
-            
-            
-            option1_title.innerHTML = "Sign her on";
-            option1_desc.innerHTML = "Captain America will be added to your team.";
-            option2_title.innerHTML = "Pass";
-            option2_desc.innerHTML = "Captain America will not be added to your team.";
+            console.log('stmh1')
+            p1.innerHTML = "The doors burst open. Security floods in from every angle, weapons drawn, moving fast and coordinated.";
+            p2.innerHTML = "Shots ring out. Glass shatters. The room becomes a blur of shouting and muzzle flash.";
+            p3.innerHTML = "You're pinned behind an overturned display case with nowhere to go and the exits closing fast.";
+            setTimeout(function() {
+                p1.innerHTML = "A red dot appears on the wall beside your head. Then it moves. Slowly. Deliberately.";
+                p2.innerHTML = "Someone outside has a bead on you through the skylight. You have maybe three seconds before they stop being patient.";
+                p3.innerHTML = "You have no cover left. Whatever happens next happens right now.";
+                if (team.includes("Moleman")) {
+                    p1.innerHTML = "All of a sudden the gun fires. You close you eyes andhear the bullet break the glass and hit flesh. You look down to see where you have been hit. But you don't see any blood. You see a pair of eyes staring back at you from the floor.";
+                    p2.innerHTML = "It is Moleman. He looks at you, tears in his eyes and says, 'Go Home'";
+                    p3.innerHTML = "You ask why but it too late, he's gone.";
+                    setTimeout(function() {
+                        if (team.includes("Gru")) {
+                            p1.innerHTML = "Gru looks at you and yells in his earpiece, 'I got this! Stay down!' He then presses a button on his turtleneck.";
+                            p2.innerHTML = "Hundreds of minions pour through every opening in the building, a chaotic yellow flood that swallows the room whole. Security doesn't know where to look.";
+                            p3.innerHTML = " You follow Gru into the herd and disappear inside it. You emerge three blocks away, winded, harpless, but free.";
+                        } else if (team.includes("Velociraptor")) {
+                            p1.innerHTML = "Velociraptor appears out of nowhere, low to the ground, moving at a speed that shouldn't be legal.";
+                            p2.innerHTML = "She doesn't slow down. You grab on and she carries you through a side corridor, through a window, and out before anyone can react.";
+                            p3.innerHTML = "You land in an alley two streets over, breathing hard. No harp. But you're out.";
+                        }
+                    }, 10000);
+                }
+                else {
+                    p1.innerHTML = "The gun fires. You close your eyes and wait for the bullet to hit.";
+                    p2.innerHTML = "It hits you square in the chest. You feel the impact, and fall to the ground. The marble cold on your face. You open your eyes and see the harp glistining in the sunlight. You reach out to grab it, but your arms won't move. You try to scream, but no sound comes out. You are frozen in place, helpless as the world moves on without you.";
+                    p3.innerHTML = "We all wish for a good ending in our stories. But sometimes, it doesn't. And yours I am afraid, ends here.";
+                }
+    
+                }, 10000);
+            } else if (window.story_key == "1b") {
+            title.innerHTML = "PLAN B — En Route";
+            p1.innerHTML = "3 AM. The armored truck rolls out of the loading bay right on schedule, heavy and slow at first, then picking up speed.";
+            p2.innerHTML = "You're already in position. Engines cut. Lights off. The whole team is silent."
+            p3.innerHTML = "The truck passes under the overpass. This is it.";
+           
+            setTimeout(function() {
+                if (team.includes("Captain America")) {
+                    p1.innerHTML = "Your radio crackles on a frequency you didn't set. Steve's voice comes through calm and clear, like he's placing a takeout order.";
+                    p2.innerHTML = "'This is Rogers. Intercepting party is at the overpass on Route 9. Move in.' You look at him. He's already lowering the radio.";
+                    p3.innerHTML = "He meets your eyes for exactly one second, then looks away. That's all you get.";
+                }
+            }, 10000);
+            p1.innerHTML = "Roadblock ahead. You hit the brakes. Another one appears in the rearview. Then a third from the side street.";
+            p2.innerHTML = "Blue and red everywhere. They knew exactly where you'd be and exactly when.";
+            p3.innerHTML = "You clock the motorcycle in an attempt to escape.";
+            }
         }
-    }
-});
+            
+        
+        }
+    
+);
 
 
-
+function blank_text() {
+    option1_title.innerHTML = "";
+    option1_desc.innerHTML = "";
+    option2_title.innerHTML = "";
+    option2_desc.innerHTML = "";
+    option3_title.innerHTML = "";
+    option3_desc.innerHTML = "";
+}
 
 
 function captain_america() {
