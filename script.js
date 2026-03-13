@@ -13,14 +13,6 @@ let option2 = document.getElementById("option2");
 let option2_title = document.getElementById("option2_title");
 let option2_desc = document.getElementById("option2_desc");
 
-let option3 = document.getElementById("option3");
-let option3_title = document.getElementById("option3_title");
-let option3_desc = document.getElementById("option3_desc");
-
-let option4 = document.getElementById("option4");
-let option4_title = document.getElementById("option4_title");
-let option4_desc = document.getElementById("option4_desc");
-
 let submit = document.getElementById("submit");
 let back = document.getElementById("back");
 let next = document.getElementById("next");
@@ -195,11 +187,42 @@ window.submit.addEventListener('click', function() {
                     p1.innerHTML = "Your radio crackles on a frequency you didn't set. Steve's voice comes through calm and clear, like he's placing a takeout order.";
                     p2.innerHTML = "'This is Rogers. Intercepting party is at the overpass on Route 9. Move in.' You look at him. He's already lowering the radio.";
                     p3.innerHTML = "He meets your eyes for exactly one second, then looks away. That's all you get.";
+                    setTimeout(function() {
+                        p1.innerHTML = "Roadblock ahead. You hit the brakes. Another one appears in the rearview. Then a third from the side street.";
+                        p2.innerHTML = "Blue and red everywhere. They knew exactly where you'd be and exactly when.";
+                        p3.innerHTML = "You clock the motorcycle in an attempt to escape.";
+                    }, 10000)
+                    setTimeout(function() {
+                        p1.innerHTML = "A helicopter starts flying beside you and a red dot appears on you.";
+                        p2.innerHTML = "You are in the open on the bridge. You have maybe three seconds before they stop being patient.";
+                        p3.innerHTML = "You have no cover left. Whatever happens next happens right now.";
+                        setTimeout(function() {
+                            if (team.includes("Moleman")) {
+                                p1.innerHTML = "All of a sudden the gun fires. You close you eyes and hear the bullet fire. But all of a sudden you hear the ground break and hit flesh. You look to your right to see where you have been hit. But you don't see any blood. You see a pair of eyes staring back at you.";
+                                p2.innerHTML = "It is Moleman. He looks at you, tears in his eyes and says, 'Go Home'";
+                                p3.innerHTML = "You ask why but it too late, he's gone.";
+                                setTimeout(function() {
+                                    p1.innerHTML = "Debris from Moleman's hole knocks you off your bike and causes you to lose balence"
+                                    p2.innerHTML = "Soon you will be surrounded by cops and taken to jail. They make you put on the orange and you sit in your cell.";
+                                    p3.innerHTML = "You stare through the barred window, looking at the sky, dreaming to be free. But for now your journey ends here.";
+                                }, 10000)
+                            } else {
+                                p1.innerHTML = "The bullet fires and you hear it wistle through the air as it hits you";
+                                p2.innerHTML = "The force knocks you of you motercycle and you tumble on the asphalt. As you tumble to sky gets dimmer and dimmer until its gone."
+                                p3.innerHTML = "We all wish for a good ending in our stories. But sometimes, it doesn't. And yours I am afraid, ends here.";
+                            }
+                        }, 10000)
+                        
+                    }, 10000)
+                } else if (team.includes("Moleman")) {
+                    setTimeout(function() {
+                        p1.innerHTML = "Moleman come up from the ground intercepting the armored vehicle.";
+                        p2.innerHTML = "You go down the hold and break the doors open and see the harp in all of its glory."
+                        p3.innerHTML = "You and your crew go into hiding each never needing to work ever again."
+                    }, 10000)
                 }
             }, 10000);
-            p1.innerHTML = "Roadblock ahead. You hit the brakes. Another one appears in the rearview. Then a third from the side street.";
-            p2.innerHTML = "Blue and red everywhere. They knew exactly where you'd be and exactly when.";
-            p3.innerHTML = "You clock the motorcycle in an attempt to escape.";
+            
             }
         }
             
@@ -265,7 +288,5 @@ function plan() {
     option1_desc.innerHTML = "Walk in loud. Hold the room. Use the harp as the bargaining chip to walk out clean.";
     option2_title.innerHTML = " Plan B: En Route";
     option2_desc.innerHTML = "Hit the armored transport mid-transfer before it ever reaches the casino. Fast window, no witnesses.";
-    option3_title.innerHTML = "Plan C: Casino Job";
-    option3_desc.innerHTML = "Let them set it up, let them get comfortable. Then take it right out from under their noses during the gala.";
     window.story_stage = "plan_selection";
 }
