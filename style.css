@@ -1,7 +1,7 @@
-/* === IMPORTS === */
+/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,700&display=swap');
 
-/* === VARIABLES === */
+/* Color Variables */
 :root {
   --primary: #ec5b13;
   --accent-cyan: #00f2ff;
@@ -14,13 +14,14 @@
   --primary-glow: rgba(236, 91, 19, 0.2);
 }
 
-/* === RESET & BASE === */
+/* Reset default margins and padding */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Main Body Styling */
 body {
   font-family: 'Public Sans', sans-serif;
   background-color: var(--bg-light);
@@ -30,7 +31,7 @@ body {
   flex-direction: column;
 }
 
-/* === HEADER === */
+/* Header Styling */
 header {
   display: flex;
   align-items: center;
@@ -42,6 +43,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
+  cursor: pointer;
 }
 
 .logo {
@@ -64,7 +66,7 @@ header {
   color: var(--text-dark);
 }
 
-/* === MAIN LAYOUT === */
+/* Center and size the main content */
 body > *:not(header) {
   max-width: 1100px;
   width: 100%;
@@ -74,7 +76,7 @@ body > *:not(header) {
   padding-right: 1.5rem;
 }
 
-/* === STORY IMAGE === */
+/* Story Image Styling */
 #story_image {
   display: block;
   width: 100%;
@@ -87,7 +89,7 @@ body > *:not(header) {
   margin-bottom: 2.5rem;
 }
 
-/* === TITLE === */
+/* Main Title Styling */
 #title {
   font-size: clamp(2rem, 5vw, 3.25rem);
   font-weight: 900;
@@ -97,7 +99,7 @@ body > *:not(header) {
   margin-bottom: 1.5rem;
 }
 
-/* === STORY PARAGRAPHS === */
+/* Paragraph Styling */
 #p1, #p2, #p3 {
   font-size: 1.1rem;
   line-height: 1.75;
@@ -111,8 +113,7 @@ body > *:not(header) {
   margin-bottom: 3rem;
 }
 
-/* === CARDS CONTAINER === */
-/* Wrap your cards in a div with class="cards" */
+/* Container for Choice Cards */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -121,7 +122,7 @@ body > *:not(header) {
   margin-bottom: 3rem;
 }
 
-/* === INDIVIDUAL CARD === */
+/* Individual Card Styling */
 .card {
   flex: 0 1 260px;
   background: var(--card-bg);
@@ -135,23 +136,11 @@ body > *:not(header) {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top right, rgba(0, 242, 255, 0.04), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
+/* Card Hover Effects */
 .card:hover {
   border-color: var(--accent-cyan);
   transform: scale(1.02);
   box-shadow: 0 8px 32px rgba(0, 242, 255, 0.12);
-}
-
-.card:hover::before {
-  opacity: 1;
 }
 
 .card h3 {
@@ -167,19 +156,12 @@ body > *:not(header) {
   line-height: 1.6;
 }
 
-/* === SELECTED CARD STATE === */
-/* In your JS, toggle the class "selected" on each card when clicked */
-/* Remove "selected" from all cards first, then add it to the clicked one */
+/* Styling for a Selected Card */
 .card.selected {
   background-color: rgba(236, 91, 19, 0.08);
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(236, 91, 19, 0.2), 0 8px 28px rgba(236, 91, 19, 0.15);
   transform: scale(1.02);
-}
-
-.card.selected::before {
-  background: radial-gradient(ellipse at top right, rgba(236, 91, 19, 0.08), transparent 70%);
-  opacity: 1;
 }
 
 .card.selected h3 {
@@ -190,9 +172,7 @@ body > *:not(header) {
   color: #374151;
 }
 
-/* === BUTTON ROW === */
-/* Wrap back/next in a div with class="nav-buttons" */
-/* Wrap the whole footer area in a div with class="button-row" */
+/* Container for Buttons */
 .button-row {
   display: flex;
   align-items: center;
@@ -209,7 +189,7 @@ body > *:not(header) {
   gap: 0.75rem;
 }
 
-/* === BACK & NEXT BUTTONS === */
+/* Back and Next Button Styling */
 #back, #next {
   display: inline-flex;
   align-items: center;
@@ -245,7 +225,7 @@ body > *:not(header) {
   background-color: rgba(236, 91, 19, 0.28);
 }
 
-/* === SUBMIT BUTTON === */
+/* Submit Button Styling */
 #submit {
   padding: 1rem 2.5rem;
   border-radius: 0.5rem;
@@ -268,11 +248,7 @@ body > *:not(header) {
   transform: translateY(-1px);
 }
 
-#submit:active {
-  transform: translateY(0);
-}
-
-/* === RESPONSIVE === */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
   header {
     padding: 0.9rem 1.25rem;
